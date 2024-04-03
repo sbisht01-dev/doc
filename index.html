@@ -33,6 +33,7 @@
         justify-content: space-between;
         align-items: center;
         border-radius: 8px;
+        margin: 20px;
     }
 
     .name {
@@ -54,6 +55,114 @@
         border-radius: 4px;
         font-weight: 600;
     }
+
+    .button:hover {
+        box-shadow: 3px 3px 15px rgb(182, 182, 182);
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 900px) {
+        .container {
+            font-family: "Noto Sans", sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        h1 {
+            margin: 20px;
+
+        }
+
+        .header {
+            margin: 12px;
+            height: 60px;
+            width: 70%;
+            background-color: rgb(241, 241, 241);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 16px;
+            color: rgb(10, 10, 10);
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            width: 50px;
+            border: none;
+            background-color: rgb(45, 45, 45);
+            color: white;
+            margin: 16px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            box-shadow: 3px 3px 15px rgb(182, 182, 182);
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .container {
+            font-family: "Noto Sans", sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        h1 {
+            margin: 20px;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .header {
+            margin: 12px;
+            height: 60px;
+            width: 70%;
+            background-color: rgb(241, 241, 241);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 16px;
+            color: rgb(10, 10, 10);
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            width: 50px;
+            border: none;
+            background-color: rgb(45, 45, 45);
+            color: white;
+            margin: 16px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            box-shadow: 3px 3px 15px rgb(182, 182, 182);
+        }
+    }
 </style>
 
 <body>
@@ -62,6 +171,13 @@
     <button onclick="login()">Login</button> -->
     <div class="container">
         <h1>Dimension Group</h1>
+        <div class="header">
+            <p class="name"> Leave Application </p>
+            <a target="_blank"
+                href="https://firebasestorage.googleapis.com/v0/b/dimension01-7a7b4.appspot.com/o/Leave%20Application.pdf?alt=media&token=e1181941-d85b-4c28-bbd9-20b4c4e84b2d">
+                <div class="button">Open</div>
+            </a>
+        </div>
         <div class="header">
             <p class="name"> Leave Application </p>
             <a target="_blank"

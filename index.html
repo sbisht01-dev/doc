@@ -18,7 +18,16 @@
 
 <body>
     <div class="container">
-        <h1>Dimension Group</h1>
+        <div class="nav">
+            <div style="height: 60px;
+            width: 60px"></div>
+            <h1>Dimension Group</h1>
+            <a href="signin.html">
+                <div class="login">
+                    <img id="profile-icon" src="profile-1341-svgrepo-com.svg" alt="">
+                </div>
+            </a>
+        </div>
         <div class="header">
             <p class="name"> Leave Application </p>
             <a target="_blank"
@@ -27,15 +36,36 @@
             </a>
         </div>
         <div class="header">
-            <p class="name"> Leave Application </p>
+            <p class="name">Salary Advance Form</p>
             <a target="_blank"
-                href="https://firebasestorage.googleapis.com/v0/b/dimension01-7a7b4.appspot.com/o/Leave%20Application.pdf?alt=media&token=e1181941-d85b-4c28-bbd9-20b4c4e84b2d">
+                href="https://firebasestorage.googleapis.com/v0/b/dimension01-7a7b4.appspot.com/o/Salary%20Advance%20Form%20(Dimension%20Group).pdf?alt=media&token=f56d0b4a-e45e-40cf-ab0d-479e15ab89fb">
                 <div class="button">Open</div>
             </a>
         </div>
     </div>
+    <script type="module">
 
-    <script type="module" src="index.mjs"></script>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
+            authDomain: "dimension01-7a7b4.firebaseapp.com",
+            databaseURL: "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "dimension01-7a7b4",
+            storageBucket: "dimension01-7a7b4.appspot.com",
+            messagingSenderId: "628507138263",
+            appId: "1:628507138263:web:ac1eec54ae6207685d7892",
+            measurementId: "G-LCQ4KW3JKY"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+    </script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

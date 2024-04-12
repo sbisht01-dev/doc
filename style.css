@@ -11,8 +11,29 @@
         text-decoration: none;
     }
 
-    h1 {
-        margin: 50px;
+    .nav {
+        width: 100%;
+        margin: 20px 0 40px 0;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .login {
+        height: 60px;
+        width: 60px;
+        background-color: rgb(183, 183, 183);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+    }
+
+    #profile-icon {
+        height: 30px;
+        width: auto;
     }
 
     .header {

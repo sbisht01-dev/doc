@@ -23,25 +23,39 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 let button = document.getElementById("button");
-let a = 2;
-//eventlistener
-button.addEventListener("click", function getDataFromUser() {
+localStorage.clear("userID");
+
+function getDataFromUser() {
   // console.log("load");
   let userMail = document.getElementById("email");
   let userMailValue = userMail.value; //email
   let userPassword = document.getElementById("password");
   let userPasswordValue = userPassword.value; //pass
-  console.log(userPasswordValue);
   signInWithEmailAndPassword(auth, userMailValue, userPasswordValue)
     .then((userCredential) => {
       // Signed in
-      console.log(userMailValue, userPasswordValue);
+      // console.log(userMailValue, userPasswordValue);
       const user = userCredential.user;
-      console.log(user);
+      redirectAccountPage();
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("Enter valid details");
       console.log(errorCode, errorMessage);
     });
-});
+}
+//eventlistener
+button.addEventListener("click", getDataFromUser);
+
+function redirectAccountPage() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      window.localStorage.setItem("userID", `${uid}`);
+      window.location.href = "admin.html";
+      console.log(uid);
+    } else {
+    }
+  });
+}

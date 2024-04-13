@@ -31,9 +31,13 @@ onValue(userInformation, function (snapshot) {
   let uidObject = snapshot.val();
   for (const key in uidObject) {
     const value = uidObject[key];
-    console.log(value);
+    // console.log(value);
     userVerification(currentUID, value);
+    // console.log(verified);
   }
+  if(verified == false ){
+            window.location.href = "signin.html";
+        }
 });
 
 function adminVerify() {

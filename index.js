@@ -46,6 +46,18 @@ function getDataFromUser() {
     });
 }
 //eventlistener
+let userMail = document.getElementById("email");
+let userPassword = document.getElementById("password");
+userMail.addEventListener("keypress", (event) => {
+  if (event.key == "Enter") {
+    userPassword.focus();
+  }
+});
+userPassword.addEventListener("keypress", (event) => {
+  if (event.key == "Enter") {
+    getDataFromUser();
+  }
+});
 button.addEventListener("click", getDataFromUser);
 
 function redirectAccountPage() {

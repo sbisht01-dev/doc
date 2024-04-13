@@ -5,6 +5,7 @@ import {
   ref,
   onValue,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+// import { QueryConstraint } from "firebase/database";
 
 const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
 const firebaseConfig = {
@@ -46,5 +47,7 @@ function adminVerify() {
 function userVerification(currentUID, uidValue) {
   if (currentUID == uidValue) {
     verified = true;
+    // let container = document.getElementsByClassName("container");
+    // container.style.display = "block";
   }
 }

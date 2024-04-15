@@ -47,7 +47,5 @@ function adminVerify() {
 function userVerification(currentUID, uidValue) {
   if (currentUID == uidValue) {
     verified = true;
-    // let container = document.getElementsByClassName("container");
-    // container.style.display = "block";
   }
 }

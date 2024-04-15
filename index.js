@@ -18,6 +18,7 @@ const firebaseConfig = {
   measurementId: "G-LCQ4KW3JKY",
 };
 
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
@@ -65,6 +66,7 @@ function redirectAccountPage() {
     if (user) {
       const uid = user.uid;
       window.localStorage.setItem("userID", `${uid}`);
+      window.localStorage.setItem("user", `${userMail.value}`);
       window.location.href = "admin.html";
       console.log(uid);
     } else {

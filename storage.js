@@ -9,6 +9,8 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 
+localStorage.clear("userID");
+
 const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
 const firebaseConfig = {
   apiKey: `${newKey}`,
@@ -29,6 +31,8 @@ const storage = getStorage(app);
 const storageRef = ref(storage, "gs://dimension01-7a7b4.appspot.com");
 const fileNames = [];
 const fileURLs = [];
+
+getFileData();
 
 function getFileData() {
   // gets all data of file
@@ -81,7 +85,7 @@ function webpageDOM(fileURLs, i) {
   fileID.href = `${fileURLs[i]}`;
 }
 
-getFileData();
+
 
 //fix file name
 function removeExtension(filename) {
@@ -92,3 +96,4 @@ function removeExtension(filename) {
     return filename;
   }
 }
+

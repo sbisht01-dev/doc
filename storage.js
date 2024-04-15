@@ -1,17 +1,47 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase } from "firebase/database";
 import {
   getStorage,
   ref,
   listAll,
   getMetadata,
   getDownloadURL,
-} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
+} from "firebase/database";
 
-const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
+// import {
+//   getAuth,
+//   signInWithEmailAndPassword,
+//   onAuthStateChanged,
+// } from "firebase/auth";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+// import { getDatabase } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+// import {
+//   getStorage,
+//   ref,
+//   listAll,
+//   getMetadata,
+//   getDownloadURL,
+// } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
+
+// const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
+// const firebaseConfig = {
+//   apiKey: `${newKey}`,
+//   authDomain: "dimension01-7a7b4.firebaseapp.com",
+//   databaseURL:
+//     "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",
+//   projectId: "dimension01-7a7b4",
+//   storageBucket: "dimension01-7a7b4.appspot.com",
+//   messagingSenderId: "628507138263",
+//   appId: "1:628507138263:web:ac1eec54ae6207685d7892",
+//   measurementId: "G-LCQ4KW3JKY",
+// };
+
+localStorage.clear("userID");
+
 const firebaseConfig = {
-  apiKey: `${newKey}`,
+  apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
   authDomain: "dimension01-7a7b4.firebaseapp.com",
   databaseURL:
     "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -83,8 +113,6 @@ function webpageDOM(fileURLs, i) {
   fileID.href = `${fileURLs[i]}`;
 }
 
-
-
 //fix file name
 function removeExtension(filename) {
   const lastDotIndex = filename.lastIndexOf(".");
@@ -94,4 +122,3 @@ function removeExtension(filename) {
     return filename;
   }
 }
-

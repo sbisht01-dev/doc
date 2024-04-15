@@ -9,8 +9,6 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 
-localStorage.clear("userID");
-
 const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
 const firebaseConfig = {
   apiKey: `${newKey}`,

@@ -32,18 +32,21 @@ const fileURLs = [];
 
 function getFileData() {
   // gets all data of file
+  let j = 0;
   listAll(storageRef)
     .then((res) => {
       res.items.forEach((itemRef) => {
         console.log();
-
         fileNames.push(removeExtension(itemRef._location.path));
+
+        webpageDOMName(fileNames, j);
+        j++;
       });
     })
     .catch((error) => {
       console.log(error);
     });
-
+  let i = 0;
   //gets URL of the file in storage
   listAll(storageRef)
     .then((res) => {
@@ -51,39 +54,31 @@ function getFileData() {
         getDownloadURL(itemRef)
           .then((url) => {
             fileURLs.push(url);
-            // console.log(fileURLs);
+            webpageDOM(fileURLs, i);
+            i++;
           })
           .catch((error) => {
             console.error("Error getting download URL:", error);
           });
       });
     })
-    .then(() => {
-      webpageDOM();
-      for (const element of fileURLs) {
-        console.log(element);
-      }
-      console.log("DOM");
-      // if(){}
-    })
     .catch((error) => {
       console.log(error);
     });
 }
-function webpageDOM() {
-  console.log(fileNames);
+
+function webpageDOMName(fileNames, j) {
   let fileView = document.getElementById("files");
-  for (let i = 0; i < fileNames.length; i++) {
-    fileView.innerHTML += `
-    <a target="_blank"
-    href="${fileURLs[i]}"><div class="header">
-        <p class="name"> ${fileNames[i]}  </p>
+  fileView.innerHTML += `
+    <a id="${fileNames[j]}" target="_blank"
+    href=""><div class="header">
+        <p class="name"> ${fileNames[j]}  </p>
         <div class="button">Open</div>
 </div> </a>`;
-  }
 }
-function downloadFiles() {
-  //puts the file on the DOM and the respective link to download it
+function webpageDOM(fileURLs, i) {
+  const fileID = document.getElementById(`${fileNames[i]}`);
+  fileID.href = `${fileURLs[i]}`;
 }
 
 getFileData();

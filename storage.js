@@ -33,6 +33,7 @@ const fileNames = [];
 const fileURLs = [];
 
 getFileData();
+const currentTime = new Date();
 
 function getFileData() {
   // gets all data of file
@@ -40,9 +41,9 @@ function getFileData() {
   listAll(storageRef)
     .then((res) => {
       res.items.forEach((itemRef) => {
-        console.log();
+        // console.log(itemRef._location.path);
+        
         fileNames.push(removeExtension(itemRef._location.path));
-
         webpageDOMName(fileNames, j);
         j++;
       });
@@ -80,12 +81,40 @@ function webpageDOMName(fileNames, j) {
         <div class="button">Open</div>
 </div> </a>`;
 }
+
 function webpageDOM(fileURLs, i) {
+  // console.log(fileURLs);
   const fileID = document.getElementById(`${fileNames[i]}`);
-  fileID.href = `${fileURLs[i]}`;
+  const fileNameWithoutExtension = decodeURIComponent(
+    fileURLs[i].substring(
+      fileURLs[i].lastIndexOf("/") + 1,
+      fileURLs[i].indexOf("?")
+    )
+  ).replace(/\.[^.]+$/, "");
+
+  console.log(fileNameWithoutExtension);
+  // if(){};
+  // fileID.href = `${fileURLs[i]}`;
+
+  const filesContainer = document.getElementById("files");
+
+  // Find all anchor tags inside the files container
+  const anchorTags = filesContainer.querySelectorAll("a");
+
+  // Iterate over each anchor tag and update the href of the matching one
+  anchorTags.forEach((anchorTag) => {
+    if (anchorTag.id === fileNameWithoutExtension) {
+      anchorTag.href = fileURLs[i];
+      console.log("URL set for anchor tag:", anchorTag.id);
+    }
+  });
+  const newTime = new Date();
+  const elapsedTime  = (newTime - currentTime);
+  console.log(elapsedTime);
+  // setTimeout(() => {
+  //   console.log(fileID.getAttribute("href"));
+  // }, 100);
 }
-
-
 
 //fix file name
 function removeExtension(filename) {
@@ -96,4 +125,3 @@ function removeExtension(filename) {
     return filename;
   }
 }
-

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" , initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style/admin.css">
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div class="nav">
+            <div class="navWidth">Admin Panel</div>
+            <div class="account">
+                <div id="user" class="navWidth"></div>
+                <button id="logout" class="navWidth">Logout</button>
+            </div>
+        </div>
+        <div class=" view">
+            <div id="files"> </div>
+            <div class="uploadSection">
+                <input id="fileInput" type="file" name="" id=""> <button id="click">Upload</button>
+
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../scripts/uploadStorage.js"></script>
+    <script type="module" src="../scripts/admin.js"></script>
+</body>
+
+</html>

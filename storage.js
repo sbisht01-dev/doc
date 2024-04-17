@@ -42,7 +42,7 @@ function getFileData() {
     .then((res) => {
       res.items.forEach((itemRef) => {
         // console.log(itemRef._location.path);
-        
+
         fileNames.push(removeExtension(itemRef._location.path));
         webpageDOMName(fileNames, j);
         j++;
@@ -83,7 +83,6 @@ function webpageDOMName(fileNames, j) {
 }
 
 function webpageDOM(fileURLs, i) {
-  // console.log(fileURLs);
   const fileID = document.getElementById(`${fileNames[i]}`);
   const fileNameWithoutExtension = decodeURIComponent(
     fileURLs[i].substring(
@@ -93,12 +92,9 @@ function webpageDOM(fileURLs, i) {
   ).replace(/\.[^.]+$/, "");
 
   console.log(fileNameWithoutExtension);
-  // if(){};
-  // fileID.href = `${fileURLs[i]}`;
 
   const filesContainer = document.getElementById("files");
 
-  // Find all anchor tags inside the files container
   const anchorTags = filesContainer.querySelectorAll("a");
 
   // Iterate over each anchor tag and update the href of the matching one
@@ -109,11 +105,8 @@ function webpageDOM(fileURLs, i) {
     }
   });
   const newTime = new Date();
-  const elapsedTime  = (newTime - currentTime);
+  const elapsedTime = newTime - currentTime;
   console.log(elapsedTime);
-  // setTimeout(() => {
-  //   console.log(fileID.getAttribute("href"));
-  // }, 100);
 }
 
 //fix file name

@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+localStorage.clear("userID");
 
 const firebaseConfig = {
   apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
@@ -18,13 +19,11 @@ const firebaseConfig = {
   measurementId: "G-LCQ4KW3JKY",
 };
 
-
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 let button = document.getElementById("button");
-localStorage.clear("userID");
 
 function getDataFromUser() {
   // console.log("load");
@@ -34,8 +33,6 @@ function getDataFromUser() {
   let userPasswordValue = userPassword.value; //pass
   signInWithEmailAndPassword(auth, userMailValue, userPasswordValue)
     .then((userCredential) => {
-      // Signed in
-      // console.log(userMailValue, userPasswordValue);
       const user = userCredential.user;
       redirectAccountPage();
     })
@@ -63,13 +60,13 @@ button.addEventListener("click", getDataFromUser);
 
 function redirectAccountPage() {
   onAuthStateChanged(auth, (user) => {
-    if (user) {
+    if (user.uid) {
       const uid = user.uid;
       window.localStorage.setItem("userID", `${uid}`);
       window.localStorage.setItem("user", `${userMail.value}`);
       window.location.href = "admin.html";
-      console.log(uid);
     } else {
+      window.location.href = "signin.html";
     }
   });
 }

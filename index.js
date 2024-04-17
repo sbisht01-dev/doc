@@ -61,8 +61,6 @@ button.addEventListener("click", getDataFromUser);
 function redirectAccountPage() {
   onAuthStateChanged(auth, (user) => {
     if (user.uid) {
-      const uid = user.uid;
-      window.localStorage.setItem("userID", `${uid}`);
       window.localStorage.setItem("user", `${userMail.value}`);
       window.location.href = "admin.html";
     } else {

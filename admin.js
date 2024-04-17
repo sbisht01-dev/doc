@@ -114,11 +114,6 @@ function removeExtension(filename) {
   }
 }
 
-function userDetail() {
-  let userMail = localStorage.getItem("user");
-  const currentUser = document.getElementById("user");
-  currentUser.innerHTML = `Account: ${userMail}`;
-}
 
 function logoutUser() {
   auth
@@ -139,10 +134,11 @@ loginBtn.addEventListener("click", logoutUser);
 function checkAuthentication() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log(user);
+      const currentUser = document.getElementById("user");
+      currentUser.innerHTML = `Account: ${user.email}`;
+      console.log(user.email);
       // User is authenticated, continue with page logic
       getFileData();
-      userDetail();
     } else {
       // User is not authenticated, redirect to the signin page
       window.location.href = "signin.html";

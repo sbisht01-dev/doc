@@ -13,7 +13,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey:"AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
+  apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
   authDomain: "dimension01-7a7b4.firebaseapp.com",
   databaseURL:
     "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -33,8 +33,7 @@ const storageRef = ref(storage, "gs://dimension01-7a7b4.appspot.com");
 const fileNames = [];
 const fileURLs = [];
 
-
-// This function retrieves data from the Firebase Storage and 
+// This function retrieves data from the Firebase Storage and
 // populates the webpage with the file names and their corresponding download URLs.
 function getFileData() {
   // gets all data of file
@@ -71,7 +70,7 @@ function getFileData() {
       console.log(error);
     });
 }
-// This function dynamically generates HTML elements for each file name and 
+// This function dynamically generates HTML elements for each file name and
 // appends them to the DOM. It creates an anchor tag (<a>) with the file name as its ID.
 function webpageDOMName(fileNames, j) {
   let fileView = document.getElementById("files");
@@ -120,13 +119,14 @@ function logoutUser() {
     .signOut()
     .then(() => {
       // Sign-out successful, redirect to the signin page
+      window.location.reload();
       window.location.href = "signin.html";
     })
     .catch((error) => {
       console.error("Error signing out:", error);
     });
 }
- 
+
 let loginBtn = document.getElementById("logout");
 loginBtn.addEventListener("click", logoutUser);
 
@@ -137,9 +137,9 @@ function checkAuthentication() {
       const currentUser = document.getElementById("user");
       currentUser.innerText = `Account: ${user.email}`;
       // User is authenticated, Page data will load in the DOM
-      getFileData();
+      getFileData(); 
     } else {
-      // User is not authenticated, redirect to the signin page. No direct admin page load  
+      // User is not authenticated, redirect to the signin page. No direct admin page load
       window.location.href = "signin.html";
     }
   });

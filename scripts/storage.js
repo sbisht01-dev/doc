@@ -10,7 +10,6 @@ import {
 
 localStorage.clear("userID");
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
   authDomain: "dimension01-7a7b4.firebaseapp.com",
@@ -40,8 +39,6 @@ function getFileData() {
   listAll(storageRef)
     .then((res) => {
       res.items.forEach((itemRef) => {
-        // console.log(itemRef._location.path);
-
         fileNames.push(removeExtension(itemRef._location.path));
         webpageDOMName(fileNames, j);
         j++;

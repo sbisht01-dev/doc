@@ -41,20 +41,30 @@ function uploadFilesToFirebase() {
   uploadTask.on(
     "state_changed",
     (snapshot) => {
-      // window.location.reload();
-      console.log("done");
-      // ... your progress handling code
+      reload(snapshot);
     },
     (error) => {
       // ... your error handling code
       console.log("Error:" + error);
     },
     () => {
-      // ... your completion handling code
+      console.log("extra");
     }
   );
 }
 
+function reload(snapshot) {
+  const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  let progressCount = document.getElementById("click");
+  console.log(progress);
+
+  progressCount.innerText = `${progress.toFixed(1)}` + "% Done";
+  if (progress == 100) {
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }
+}
 
 // ************************************************
 const databaseRef = ref(

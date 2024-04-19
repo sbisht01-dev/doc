@@ -10,9 +10,9 @@ import {
 
 localStorage.clear("userID");
 
-const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
+
 const firebaseConfig = {
-  apiKey: `${newKey}`,
+  apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
   authDomain: "dimension01-7a7b4.firebaseapp.com",
   databaseURL:
     "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -60,7 +60,6 @@ function getFileData() {
             fileURLs.push(url);
             webpageDOM(fileURLs, i);
             i++;
-            console.log(fileURLs);
           })
           .catch((error) => {
             console.error("Error getting download URL:", error);

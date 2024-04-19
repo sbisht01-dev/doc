@@ -12,9 +12,8 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 
-const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
 const firebaseConfig = {
-  apiKey: `${newKey}`,
+  apiKey:"AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
   authDomain: "dimension01-7a7b4.firebaseapp.com",
   databaseURL:
     "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -34,6 +33,9 @@ const storageRef = ref(storage, "gs://dimension01-7a7b4.appspot.com");
 const fileNames = [];
 const fileURLs = [];
 
+
+// This function retrieves data from the Firebase Storage and 
+// populates the webpage with the file names and their corresponding download URLs.
 function getFileData() {
   // gets all data of file
   let j = 0;
@@ -69,7 +71,8 @@ function getFileData() {
       console.log(error);
     });
 }
-
+// This function dynamically generates HTML elements for each file name and 
+// appends them to the DOM. It creates an anchor tag (<a>) with the file name as its ID.
 function webpageDOMName(fileNames, j) {
   let fileView = document.getElementById("files");
   fileView.innerHTML += `
@@ -80,8 +83,8 @@ function webpageDOMName(fileNames, j) {
 </div> </a>`;
 }
 
+// Updates the href attribute of anchor tags with download URLs.
 function webpageDOM(fileURLs, i) {
-  1;
   const fileID = document.getElementById(`${fileNames[i]}`);
   const fileNameWithoutExtension = decodeURIComponent(
     fileURLs[i].substring(
@@ -102,7 +105,7 @@ function webpageDOM(fileURLs, i) {
   });
 }
 
-//fix file name
+//Removes file extensions from filenames.
 function removeExtension(filename) {
   const lastDotIndex = filename.lastIndexOf(".");
   if (lastDotIndex !== -1) {
@@ -111,7 +114,7 @@ function removeExtension(filename) {
     return filename;
   }
 }
-
+// Signs out the current user and redirects to the signin page.
 function logoutUser() {
   auth
     .signOut()
@@ -123,7 +126,7 @@ function logoutUser() {
       console.error("Error signing out:", error);
     });
 }
-
+ 
 let loginBtn = document.getElementById("logout");
 loginBtn.addEventListener("click", logoutUser);
 
@@ -133,14 +136,12 @@ function checkAuthentication() {
     if (user) {
       const currentUser = document.getElementById("user");
       currentUser.innerText = `Account: ${user.email}`;
-      // User is authenticated, continue with page logic
+      // User is authenticated, Page data will load in the DOM
       getFileData();
     } else {
-      // User is not authenticated, redirect to the signin page
+      // User is not authenticated, redirect to the signin page. No direct admin page load  
       window.location.href = "signin.html";
     }
   });
 }
 checkAuthentication();
-
-function fileSync() {}

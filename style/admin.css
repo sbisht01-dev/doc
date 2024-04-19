@@ -16,7 +16,7 @@
 .nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     height: 60px;
     font-weight: 600;

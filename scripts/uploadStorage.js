@@ -10,9 +10,8 @@ import {
   onValue,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
-const newKey = "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U";
 const firebaseConfig = {
-  apiKey: `${newKey}`,
+  apiKey: "AIzaSyDvlSSduzGaNjaaYkSHTOdcVnlRBd39j5U",
   authDomain: "dimension01-7a7b4.firebaseapp.com",
   databaseURL:
     "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app",

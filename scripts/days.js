@@ -34,8 +34,10 @@ function showDatabase() {
   onValue(calendar, function (snapshot) {
     let calendarVal = snapshot.val();
     console.log(calendarVal);
+    showHolidayDetails(calendarVal);
+
     for (const key in calendarVal) {
-      console.log(calendarVal[key]);
+      console.log(calendarVal[key].date);
     }
   });
 }
@@ -50,4 +52,31 @@ function setHolidays() {
   showDatabase();
 }
 
-showDatabase();
+setHolidays();
+
+function showHolidayDetails(calendarVal) {
+  // Create an array to store holiday details
+  let holidays = [];
+
+  // Extract holiday details into an array of objects
+  for (const key in calendarVal) {
+    const holiday = calendarVal[key];
+    holidays.push({
+      name: key,
+      date: holiday.Date,
+      type: holiday.Type,
+    });
+  }
+  // Sort the holidays array based on the date
+  holidays.sort((a, b) => new Date(a.date) - new Date(b.date));
+  console.log(holidays);
+
+  // Display the sorted list
+  holidays.forEach((holiday) => {
+    console.log(
+      `Today ${holiday.date} is ${holiday.name} and the type is ${holiday.type}`
+    );
+  });
+}
+
+// Example usage

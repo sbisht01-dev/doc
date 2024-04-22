@@ -5,6 +5,9 @@ import {
   ref,
   get,
   set,
+  child,
+  push,
+  update,
   onValue,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
@@ -27,23 +30,24 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app);
 const calendar = ref(database, "Calendar");
 
-onValue(calendar, function (snapshot) {
-  let calendarVal = snapshot.val();
-  console.log(calendarVal);
-  for (const key in calendarVal) {
-    const value = calendar[key];
-    console.log(value);
-  }
-
-});
-
-function adminVerify() {
-  const queryParams = new URLSearchParams(window.location.search);
-  const uid = queryParams.get("query");
+function showDatabase() {
+  onValue(calendar, function (snapshot) {
+    let calendarVal = snapshot.val();
+    console.log(calendarVal);
+    for (const key in calendarVal) {
+      console.log(calendarVal[key]);
+    }
+  });
 }
 
-function userVerification(currentUID, uidValue) {
-  if (currentUID == uidValue) {
-    verified = true;
-  }
+function setHolidays() {
+  console.log("set");
+  //set data onto a node named calendar either update or create the node if not already present
+  set(ref(database, "Calendar/" + "Ram Navmi"), {
+    Date: "12/06/2024",
+    Type: "G",
+  });
+  showDatabase();
 }
+
+showDatabase();

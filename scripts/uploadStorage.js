@@ -27,7 +27,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const storage = getStorage(app);
 const storageRef = ref(storage, "gs://dimension01-7a7b4.appspot.com");
-const database = getDatabase();
+const database = getDatabase(app);
+
 let upload = document.getElementById("click");
 upload.addEventListener("click", uploadFilesToFirebase);
 
@@ -65,13 +66,3 @@ function reload(snapshot) {
     }, 100);
   }
 }
-
-// ************************************************
-const databaseRef = ref(
-  database,
-  "https://dimension01-7a7b4-default-rtdb.asia-southeast1.firebasedatabase.app/"
-);
-onValue(databaseRef, (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);
-});

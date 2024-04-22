@@ -135,7 +135,7 @@ function checkAuthentication() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const currentUser = document.getElementById("user");
-      currentUser.innerText = `Account: ${user.email}`;
+      currentUser.innerText = `${user.email}`;
       // User is authenticated, Page data will load in the DOM
       getFileData(); 
     } else {
